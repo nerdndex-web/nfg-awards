@@ -1,1 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFG Awards - Votação</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url('NFG_Awards_-_banner.png') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    backdrop-filter: blur(4px);
+  }
+  .logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 260px;
+  }
+  .container {
+    width: 90%;
+    max-width: 800px;
+    margin: 120px auto;
+    background: rgba(0,0,0,0.65);
+    padding: 25px;
+    border-radius: 15px;
+  }
+  h1, h2 {
+    text-shadow: 0 0 10px #00d4ff;
+  }
+  input[type=radio] {
+    margin-right: 8px;
+  }
+  button {
+    margin-top: 20px;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+<img src="Ativo_2.png" class="logo"> 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NFG Awards - Votação</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('NFG_Awards_-_banner.png') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      backdrop-filter: brightness(0.5);
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 260px;
+    }
+
+    .container {
+      background: rgba(0,0,0,0.55);
+      max-width: 650px;
+      margin: 120px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+
+    .option {
+      margin: 15px 0;
+      padding: 12px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .option:hover {
+      background: rgba(255,255,255,0.25);
+    }
+  </style>
+</head>
+<body>
+
+  <img class="logo" src="Ativo_2.png" alt="NFG Awards Logo" />
+
+  <div class="container">
+    <h1>Artista Favorito da NFG</h1>
+    <form id="voteForm">
+      <h2>Artista Favorito</h2>
+      <div><input type="radio" name="artista" value="Sabrina Carpenter"> Sabrina Carpenter</div>
+      <div><input type="radio" name="artista" value="Bibi Babydoll"> Bibi Babydoll</div>
+      <div><input type="radio" name="artista" value="Linkin Park"> Linkin Park</div>
+      <div><input type="radio" name="artista" value="Lady Gaga"> Lady Gaga</div>
+      <div><input type="radio" name="artista" value="LOL"> LOL</div>
+
+      <h2>Maior Dementador</h2>
+      <div><input type="radio" name="dementador" value="Pedro"> Pedro</div>
+      <div><input type="radio" name="dementador" value="Zart"> Zart</div>
+      <div><input type="radio" name="dementador" value="Juan"> Juan</div>
+      <div><input type="radio" name="dementador" value="Potter"> Potter</div>
+      <div><input type="radio" name="dementador" value="Fat"> Fat</div>
+
+      <h2>Maior Criador de Narrativas</h2>
+      <div><input type="radio" name="criador" value="Pedro"> Pedro</div>
+      <div><input type="radio" name="criador" value="Zart"> Zart</div>
+      <div><input type="radio" name="criador" value="Juan"> Juan</div>
+      <div><input type="radio" name="criador" value="Iago"> Iago</div>
+      <div><input type="radio" name="criador" value="Djonathan"> Djonathan</div>
+      <div><input type="radio" name="criador" value="Potter"> Potter</div>
+
+      <h2>Melhor frase</h2>
+      <div><input type="radio" name="frase" value="Pode sair de casa"> Pode sair de casa</div>
+      <div><input type="radio" name="frase" value="Bucha"> Bucha</div>
+      <div><input type="radio" name="frase" value="pega um cara nada a vê"> pega um cara nada a vê</div>
+      <div><input type="radio" name="frase" value="fodase estoro"> fodase estoro</div>
+      <div><input type="radio" name="frase" value="Rato do PT"> Rato do PT</div>
+
+      <h2>Maior Narrativa</h2>
+      <div><input type="radio" name="narrativa" value="Djonathan pegar cara"> Djonathan pegar cara</div>
+      <div><input type="radio" name="narrativa" value="Iago por o Kauan na familia"> Iago por o Kauan na família</div>
+      <div><input type="radio" name="narrativa" value="Pedro pegar a Anita"> Pedro pegar a Anita</div>
+      <div><input type="radio" name="narrativa" value="Iago Cafetão"> Iago Cafetão</div>
+      <div><input type="radio" name="narrativa" value="Vini andar de long"> Vini andar de long</div>
+
+      <h2>Melhor Notícia Fake</h2>
+      <div><input type="radio" name="fake" value="BAILE FUNK"> BAILE FUNK</div>
+      <div><input type="radio" name="fake" value="TENTATIVA DE EXPLOSÃO"> TENTATIVA DE EXPLOSÃO</div>
+      <div><input type="radio" name="fake" value="AMEAÇAS"> AMEAÇAS</div>
+      <div><input type="radio" name="fake" value="FORAGIDO EM SANTA CRUZ"> FORAGIDO EM SANTA CRUZ</div>
+      <div><input type="radio" name="fake" value="POTTER QUIETO"> POTTER QUIETO</div>
+
+      <h2>Maior Inimigo da NFG</h2>
+      <div><input type="radio" name="inimigo" value="Expresso São Miguel"> Expresso São Miguel</div>
+      <div><input type="radio" name="inimigo" value="Clube das Winx (Throne)"> Clube das Winx (Throne)</div>
+      <div><input type="radio" name="inimigo" value="Eliano Vitor (Lol)"> Eliano Vitor (Lol)</div>
+      <div><input type="radio" name="inimigo" value="Sejuani em Clash (lol)"> Sejuani em Clash (lol)</div>
+      <div><input type="radio" name="inimigo" value="UPA"> UPA</div>
+
+      <h2>Melhor Print do LOL</h2>
+      <div><input type="radio" name="print" value="LILIA MACA"> LILIA MACA</div>
+      <div><input type="radio" name="print" value="É O CARA MAIS CRIOL"> É O CARA MAIS CRIOL</div>
+      <div><input type="radio" name="print" value="CHOGATH RAC"> CHOGATH RAC</div>
+      <div><input type="radio" name="print" value="NAFIRI PROTAGONISTA"> NAFIRI PROTAGONISTA</div>
+      <div><input type="radio" name="print" value="MCQQUESE"> MCQQUESE</div>
+      <div><input type="radio" name="print" value="NOC INDIO MAL"> NOC INDIO MAL</div>
+
+      <h2>Pior Recomendação de Game</h2>
+      <div><input type="radio" name="recomendacao" value="Arcageddon (potter)"> Arcageddon (potter)</div>
+      <div><input type="radio" name="recomendacao" value="WildGate (Fat)"> WildGate (Fat)</div>
+      <div><input type="radio" name="recomendacao" value="Where Winds Meet (Fat)"> Where Winds Meet (Fat)</div>
+      <div><input type="radio" name="recomendacao" value="The First (potter)"> The First (potter)</div>
+      <div><input type="radio" name="recomendacao" value="Black Desert (Fat)"> Black Desert (Fat)</div>
+      <div><input type="radio" name="recomendacao" value="DeadZone Rogue (potter)"> DeadZone Rogue (potter)</div>
+
+      <h2>Jogo do Ano da NFG</h2>
+      <div><input type="radio" name="jogo" value="Throne"> Throne</div>
+      <div><input type="radio" name="jogo" value="PEAK"> PEAK</div>
+      <div><input type="radio" name="jogo" value="NOFGMON (Minecraft)"> NOFGMON (Minecraft)</div>
+      <div><input type="radio" name="jogo" value="League"> League</div>
+      <div><input type="radio" name="jogo" value="REPO"> REPO</div>
+      <div><input type="radio" name="jogo" value="Escape the Backrooms"> Escape the Backrooms</div>
+      <div><input type="radio" name="jogo" value="Gunfire Reborn"> Gunfire Reborn</div>
+
+      <h2>Pior Jogo do Ano</h2>
+      <div><input type="radio" name="piorjogo" value="Marvel Rivals"> Marvel Rivals</div>
+      <div><input type="radio" name="piorjogo" value="Rematch"> Rematch</div>
+      <div><input type="radio" name="piorjogo" value="Arcadegeddon"> Arcadegeddon</div>
+      <div><input type="radio" name="piorjogo" value="League"> League</div>
+      <div><input type="radio" name="piorjogo" value="Pummel Party"> Pummel Party</div>
+      <div><input type="radio" name="piorjogo" value="Ranch Sim"> Ranch Sim</div>
+
+      <br>
+      <button type="submit" style="padding: 10px 20px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; background: #00d4ff; color: black;">Votar</button>
+    </form>
+
+<script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbz-Ee00-YykIxdHm9tQaP80o0oa2xmci6Ru7z4GYk26TuJjQmx10htMKyDo_2ZqC32oVQ/exec";
+  const form = document.getElementById("voteForm");
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    fetch(scriptURL, {
+      method: "POST",
+      body: JSON.stringify(data)
+    })
+    .then(r => alert("Voto registrado com sucesso!"))
+    .catch(err => alert("Erro ao enviar voto."));
+  });
+</script>
+  </div>
+    <div class="option">Bibi Babydoll</div>
+    <div class="option">Linkin Park</div>
+    <div class="option">Lady Gaga</div>
+    <div class="option">LOL</div>
+
+  </div>
+
+</body>
+</html>
+</body>
+</html>
 <!-- HTML will be provided here manually since canvas not accessible -->
