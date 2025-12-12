@@ -1,221 +1,348 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>NFG Awards - Votação</title>
 <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+  :root{--accent:#00d4ff}
+  html,body{height:100%;margin:0;font-family:Inter, system-ui, Arial, sans-serif;background:#000}
+  body{
     background: url('NFG_Awards_-_banner.png') no-repeat center center fixed;
     background-size: cover;
-    color: white;
-    backdrop-filter: blur(4px);
+    color:#fff;
+    overflow:hidden;
   }
-  .logo {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 260px;
-  }
-  .container {
-    width: 90%;
-    max-width: 800px;
-    margin: 120px auto;
-    background: rgba(0,0,0,0.65);
-    padding: 25px;
-    border-radius: 15px;
-  }
-  h1, h2 {
-    text-shadow: 0 0 10px #00d4ff;
-  }
-  input[type=radio] {
-    margin-right: 8px;
-  }
-  button {
-    margin-top: 20px;
-    width: 100%;
-  }
+  .bg-overlay{position:fixed;inset:-5% 0 0 -5%;background:url('Ativo_2.png') no-repeat center;background-size:contain;opacity:0.13;pointer-events:none}
+  .page{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:48px;box-sizing:border-box;background:linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.65));transition:opacity .25s,transform .25s;opacity:0;visibility:hidden}
+  .page.active{opacity:1;visibility:visible}
+  h1{margin:12vh 0 24px;font-size:40px;text-align:center;text-shadow:0 6px 24px rgba(0,0,0,0.6);letter-spacing:1px}
+  .options{width:100%;max-width:920px}
+  .option{background:rgba(255,255,255,0.08);padding:20px;border-radius:12px;margin:12px 0;font-size:20px;cursor:pointer;display:flex;align-items:center;gap:12px}
+  .option.selected{background:linear-gradient(90deg, rgba(0,212,255,0.12), rgba(0,212,255,0.08));box-shadow:0 6px 30px rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.12)}
+  .option .dot{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,0.5);display:inline-block}
+  .option.selected .dot{background:var(--accent);border-color:var(--accent)}
+  .controls{width:100%;max-width:920px;display:flex;gap:12px;margin-top:22px}
+  .vote-btn{flex:1;padding:16px;font-size:18px;border-radius:10px;border:none;background:var(--accent);color:#000;cursor:pointer;opacity:0.95}
+  .vote-btn[disabled]{opacity:0.35;cursor:not-allowed}
+  .small-btn{padding:14px;border-radius:10px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.06);color:#fff}
+  .done-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:24px}
+  .done-screen h2{font-size:36px}
+  .next-arrow{width:70px;height:70px;border-radius:999px;border:none;background:rgba(255,255,255,0.08);font-size:36px;cursor:pointer}
+  .footer-note{position:fixed;left:20px;bottom:20px;font-size:13px;opacity:0.8}
+  @media (max-width:600px){h1{font-size:28px}.option{font-size:16px;padding:14px}}
 </style>
 </head>
 <body>
-<img src="Ativo_2.png" class="logo"> 
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NFG Awards - Votação</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('NFG_Awards_-_banner.png') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      backdrop-filter: brightness(0.5);
-    }
+<div class="bg-overlay"></div>
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 260px;
-    }
+<!-- PAGE 1 -->
+<section id="page1" class="page active" data-cat="Artista Favorito da NFG">
+  <h1>Artista Favorito da NFG</h1>
+  <div class="options">
+    <div class="option" data-value="Sabrina Carpenter"><span class="dot"></span>Sabrina Carpenter</div>
+    <div class="option" data-value="Bibi Babydoll"><span class="dot"></span>Bibi Babydoll</div>
+    <div class="option" data-value="Linkin Park"><span class="dot"></span>Linkin Park</div>
+    <div class="option" data-value="Lady Gaga"><span class="dot"></span>Lady Gaga</div>
+    <div class="option" data-value="LOL"><span class="dot"></span>LOL</div>
+  </div>
+  <div class="controls">
+    <button class="vote-btn" disabled>VOTAR</button>
+  </div>
+</section>
 
-    .container {
-      background: rgba(0,0,0,0.55);
-      max-width: 650px;
-      margin: 120px auto;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
+<!-- PAGE 2 -->
+<section id="page2" class="page" data-cat="Maior Dementador">
+  <h1>Maior Dementador</h1>
+  <div class="options">
+    <div class="option" data-value="Pedro"><span class="dot"></span>Pedro</div>
+    <div class="option" data-value="Zart"><span class="dot"></span>Zart</div>
+    <div class="option" data-value="Juan"><span class="dot"></span>Juan</div>
+    <div class="option" data-value="Potter"><span class="dot"></span>Potter</div>
+    <div class="option" data-value="Fat"><span class="dot"></span>Fat</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-    h1 {
-      text-align: center;
-      margin-top: 0;
-      font-size: 32px;
-      letter-spacing: 1px;
-    }
+<!-- PAGE 3 -->
+<section id="page3" class="page" data-cat="Maior Criador de Narrativas">
+  <h1>Maior Criador de Narrativas</h1>
+  <div class="options">
+    <div class="option" data-value="Pedro"><span class="dot"></span>Pedro</div>
+    <div class="option" data-value="Zart"><span class="dot"></span>Zart</div>
+    <div class="option" data-value="Juan"><span class="dot"></span>Juan</div>
+    <div class="option" data-value="Iago"><span class="dot"></span>Iago</div>
+    <div class="option" data-value="Djonathan"><span class="dot"></span>Djonathan</div>
+    <div class="option" data-value="Potter"><span class="dot"></span>Potter</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-    .option {
-      margin: 15px 0;
-      padding: 12px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+<!-- PAGE 4 -->
+<section id="page4" class="page" data-cat="Melhor frase">
+  <h1>Melhor frase</h1>
+  <div class="options">
+    <div class="option" data-value="Pode sair de casa"><span class="dot"></span>Pode sair de casa</div>
+    <div class="option" data-value="Bucha"><span class="dot"></span>Bucha</div>
+    <div class="option" data-value="pega um cara nada a vê"><span class="dot"></span>pega um cara nada a vê</div>
+    <div class="option" data-value="fodase estoro"><span class="dot"></span>fodase estoro</div>
+    <div class="option" data-value="Rato do PT"><span class="dot"></span>Rato do PT</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-    .option:hover {
-      background: rgba(255,255,255,0.25);
-    }
-  </style>
-</head>
-<body>
+<!-- PAGE 5 -->
+<section id="page5" class="page" data-cat="Maior Narrativa">
+  <h1>Maior Narrativa</h1>
+  <div class="options">
+    <div class="option" data-value="Djonathan pegar cara"><span class="dot"></span>Djonathan pegar cara</div>
+    <div class="option" data-value="Iago por o Kauan na familia"><span class="dot"></span>Iago por o Kauan na família</div>
+    <div class="option" data-value="Pedro pegar a Anita"><span class="dot"></span>Pedro pegar a Anita</div>
+    <div class="option" data-value="Iago Cafetão"><span class="dot"></span>Iago Cafetão</div>
+    <div class="option" data-value="Vini andar de long"><span class="dot"></span>Vini andar de long</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-  <img class="logo" src="Ativo_2.png" alt="NFG Awards Logo" />
+<!-- PAGE 6 -->
+<section id="page6" class="page" data-cat="MELHOR NOTÍCIA FAKE">
+  <h1>MELHOR NOTÍCIA FAKE</h1>
+  <div class="options">
+    <div class="option" data-value="BAILE FUNK"><span class="dot"></span>BAILE FUNK</div>
+    <div class="option" data-value="TENTATIVA DE EXPLOSÃO"><span class="dot"></span>TENTATIVA DE EXPLOSÃO</div>
+    <div class="option" data-value="AMEAÇAS"><span class="dot"></span>AMEAÇAS</div>
+    <div class="option" data-value="FORAGIDO EM SANTA CRUZ"><span class="dot"></span>FORAGIDO EM SANTA CRUZ</div>
+    <div class="option" data-value="POTTER QUIETO"><span class="dot"></span>POTTER QUIETO</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-  <div class="container">
-    <h1>Artista Favorito da NFG</h1>
-    <form id="voteForm">
-      <h2>Artista Favorito</h2>
-      <div><input type="radio" name="artista" value="Sabrina Carpenter"> Sabrina Carpenter</div>
-      <div><input type="radio" name="artista" value="Bibi Babydoll"> Bibi Babydoll</div>
-      <div><input type="radio" name="artista" value="Linkin Park"> Linkin Park</div>
-      <div><input type="radio" name="artista" value="Lady Gaga"> Lady Gaga</div>
-      <div><input type="radio" name="artista" value="LOL"> LOL</div>
+<!-- PAGE 7 -->
+<section id="page7" class="page" data-cat="Maior Inimigo da NFG">
+  <h1>Maior Inimigo da NFG</h1>
+  <div class="options">
+    <div class="option" data-value="Expresso São Miguel"><span class="dot"></span>Expresso São Miguel</div>
+    <div class="option" data-value="Clube das Winx(Throne)"><span class="dot"></span>Clube das Winx(Throne)</div>
+    <div class="option" data-value="Eliano Vitor (Lol)"><span class="dot"></span>Eliano Vitor (Lol)</div>
+    <div class="option" data-value="Sejuani em Clash (lol)"><span class="dot"></span>Sejuani em Clash (lol)</div>
+    <div class="option" data-value="UPA"><span class="dot"></span>UPA</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-      <h2>Maior Dementador</h2>
-      <div><input type="radio" name="dementador" value="Pedro"> Pedro</div>
-      <div><input type="radio" name="dementador" value="Zart"> Zart</div>
-      <div><input type="radio" name="dementador" value="Juan"> Juan</div>
-      <div><input type="radio" name="dementador" value="Potter"> Potter</div>
-      <div><input type="radio" name="dementador" value="Fat"> Fat</div>
+<!-- PAGE 8 -->
+<section id="page8" class="page" data-cat="MELHOR PRINT DO LOL">
+  <h1>MELHOR PRINT DO LOL</h1>
+  <div class="options">
+    <div class="option" data-value="LILIA MACA"><span class="dot"></span>LILIA MACA</div>
+    <div class="option" data-value="É O CARA MAIS CRIOL"><span class="dot"></span>É O CARA MAIS CRIOL</div>
+    <div class="option" data-value="CHOGATH RAC"><span class="dot"></span>CHOGATH RAC</div>
+    <div class="option" data-value="NAFIRI PROTAGONISTA"><span class="dot"></span>NAFIRI PROTAGONISTA</div>
+    <div class="option" data-value="MCQQUESE"><span class="dot"></span>MCQQUESE</div>
+    <div class="option" data-value="NOC INDIO MAL"><span class="dot"></span>NOC INDIO MAL</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-      <h2>Maior Criador de Narrativas</h2>
-      <div><input type="radio" name="criador" value="Pedro"> Pedro</div>
-      <div><input type="radio" name="criador" value="Zart"> Zart</div>
-      <div><input type="radio" name="criador" value="Juan"> Juan</div>
-      <div><input type="radio" name="criador" value="Iago"> Iago</div>
-      <div><input type="radio" name="criador" value="Djonathan"> Djonathan</div>
-      <div><input type="radio" name="criador" value="Potter"> Potter</div>
+<!-- PAGE 9 -->
+<section id="page9" class="page" data-cat="Pior Recomendação de game">
+  <h1>Pior Recomendação de game</h1>
+  <div class="options">
+    <div class="option" data-value="Arcageddon (potter)"><span class="dot"></span>Arcageddon (potter)</div>
+    <div class="option" data-value="WildGate (Fat)"><span class="dot"></span>WildGate (Fat)</div>
+    <div class="option" data-value="Where Winds Meet (Fat)"><span class="dot"></span>Where Winds Meet (Fat)</div>
+    <div class="option" data-value="The First (potter)"><span class="dot"></span>The First (potter)</div>
+    <div class="option" data-value="Black Desert (Fat)"><span class="dot"></span>Black Desert (Fat)</div>
+    <div class="option" data-value="DeadZone Rogue (potter)"><span class="dot"></span>DeadZone Rogue (potter)</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-      <h2>Melhor frase</h2>
-      <div><input type="radio" name="frase" value="Pode sair de casa"> Pode sair de casa</div>
-      <div><input type="radio" name="frase" value="Bucha"> Bucha</div>
-      <div><input type="radio" name="frase" value="pega um cara nada a vê"> pega um cara nada a vê</div>
-      <div><input type="radio" name="frase" value="fodase estoro"> fodase estoro</div>
-      <div><input type="radio" name="frase" value="Rato do PT"> Rato do PT</div>
+<!-- PAGE 10 -->
+<section id="page10" class="page" data-cat="Jogo do Ano da NFG">
+  <h1>Jogo do Ano da NFG</h1>
+  <div class="options">
+    <div class="option" data-value="Throne"><span class="dot"></span>Throne</div>
+    <div class="option" data-value="PEAK"><span class="dot"></span>PEAK</div>
+    <div class="option" data-value="NOFGMON ( Minecraft)"><span class="dot"></span>NOFGMON ( Minecraft)</div>
+    <div class="option" data-value="League"><span class="dot"></span>League</div>
+    <div class="option" data-value="REPO"><span class="dot"></span>REPO</div>
+    <div class="option" data-value="Escape the Backrooms"><span class="dot"></span>Escape the Backrooms</div>
+    <div class="option" data-value="Gunfire Reborn"><span class="dot"></span>Gunfire Reborn</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-      <h2>Maior Narrativa</h2>
-      <div><input type="radio" name="narrativa" value="Djonathan pegar cara"> Djonathan pegar cara</div>
-      <div><input type="radio" name="narrativa" value="Iago por o Kauan na familia"> Iago por o Kauan na família</div>
-      <div><input type="radio" name="narrativa" value="Pedro pegar a Anita"> Pedro pegar a Anita</div>
-      <div><input type="radio" name="narrativa" value="Iago Cafetão"> Iago Cafetão</div>
-      <div><input type="radio" name="narrativa" value="Vini andar de long"> Vini andar de long</div>
+<!-- PAGE 11 -->
+<section id="page11" class="page" data-cat="Pior jogo do Ano">
+  <h1>Pior jogo do Ano</h1>
+  <div class="options">
+    <div class="option" data-value="Marvel Rivals"><span class="dot"></span>Marvel Rivals</div>
+    <div class="option" data-value="Rematch"><span class="dot"></span>Rematch</div>
+    <div class="option" data-value="Arcadegeddon"><span class="dot"></span>Arcadegeddon</div>
+    <div class="option" data-value="League"><span class="dot"></span>League</div>
+    <div class="option" data-value="Pummel Party"><span class="dot"></span>Pummel Party</div>
+    <div class="option" data-value="Ranch Sim"><span class="dot"></span>Ranch Sim</div>
+  </div>
+  <div class="controls"><button class="vote-btn" disabled>VOTAR</button></div>
+</section>
 
-      <h2>Melhor Notícia Fake</h2>
-      <div><input type="radio" name="fake" value="BAILE FUNK"> BAILE FUNK</div>
-      <div><input type="radio" name="fake" value="TENTATIVA DE EXPLOSÃO"> TENTATIVA DE EXPLOSÃO</div>
-      <div><input type="radio" name="fake" value="AMEAÇAS"> AMEAÇAS</div>
-      <div><input type="radio" name="fake" value="FORAGIDO EM SANTA CRUZ"> FORAGIDO EM SANTA CRUZ</div>
-      <div><input type="radio" name="fake" value="POTTER QUIETO"> POTTER QUIETO</div>
+<!-- DONE PAGES -->
+<!-- One done-screen per category -->
+<section id="done1" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice1"></strong></p>
+    <button class="next-arrow" onclick="goto(2)">↓</button>
+  </div>
+</section>
 
-      <h2>Maior Inimigo da NFG</h2>
-      <div><input type="radio" name="inimigo" value="Expresso São Miguel"> Expresso São Miguel</div>
-      <div><input type="radio" name="inimigo" value="Clube das Winx (Throne)"> Clube das Winx (Throne)</div>
-      <div><input type="radio" name="inimigo" value="Eliano Vitor (Lol)"> Eliano Vitor (Lol)</div>
-      <div><input type="radio" name="inimigo" value="Sejuani em Clash (lol)"> Sejuani em Clash (lol)</div>
-      <div><input type="radio" name="inimigo" value="UPA"> UPA</div>
+<section id="done2" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice2"></strong></p>
+    <button class="next-arrow" onclick="goto(3)">↓</button>
+  </div>
+</section>
 
-      <h2>Melhor Print do LOL</h2>
-      <div><input type="radio" name="print" value="LILIA MACA"> LILIA MACA</div>
-      <div><input type="radio" name="print" value="É O CARA MAIS CRIOL"> É O CARA MAIS CRIOL</div>
-      <div><input type="radio" name="print" value="CHOGATH RAC"> CHOGATH RAC</div>
-      <div><input type="radio" name="print" value="NAFIRI PROTAGONISTA"> NAFIRI PROTAGONISTA</div>
-      <div><input type="radio" name="print" value="MCQQUESE"> MCQQUESE</div>
-      <div><input type="radio" name="print" value="NOC INDIO MAL"> NOC INDIO MAL</div>
+<section id="done3" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice3"></strong></p>
+    <button class="next-arrow" onclick="goto(4)">↓</button>
+  </div>
+</section>
 
-      <h2>Pior Recomendação de Game</h2>
-      <div><input type="radio" name="recomendacao" value="Arcageddon (potter)"> Arcageddon (potter)</div>
-      <div><input type="radio" name="recomendacao" value="WildGate (Fat)"> WildGate (Fat)</div>
-      <div><input type="radio" name="recomendacao" value="Where Winds Meet (Fat)"> Where Winds Meet (Fat)</div>
-      <div><input type="radio" name="recomendacao" value="The First (potter)"> The First (potter)</div>
-      <div><input type="radio" name="recomendacao" value="Black Desert (Fat)"> Black Desert (Fat)</div>
-      <div><input type="radio" name="recomendacao" value="DeadZone Rogue (potter)"> DeadZone Rogue (potter)</div>
+<section id="done4" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice4"></strong></p>
+    <button class="next-arrow" onclick="goto(5)">↓</button>
+  </div>
+</section>
 
-      <h2>Jogo do Ano da NFG</h2>
-      <div><input type="radio" name="jogo" value="Throne"> Throne</div>
-      <div><input type="radio" name="jogo" value="PEAK"> PEAK</div>
-      <div><input type="radio" name="jogo" value="NOFGMON (Minecraft)"> NOFGMON (Minecraft)</div>
-      <div><input type="radio" name="jogo" value="League"> League</div>
-      <div><input type="radio" name="jogo" value="REPO"> REPO</div>
-      <div><input type="radio" name="jogo" value="Escape the Backrooms"> Escape the Backrooms</div>
-      <div><input type="radio" name="jogo" value="Gunfire Reborn"> Gunfire Reborn</div>
+<section id="done5" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice5"></strong></p>
+    <button class="next-arrow" onclick="goto(6)">↓</button>
+  </div>
+</section>
 
-      <h2>Pior Jogo do Ano</h2>
-      <div><input type="radio" name="piorjogo" value="Marvel Rivals"> Marvel Rivals</div>
-      <div><input type="radio" name="piorjogo" value="Rematch"> Rematch</div>
-      <div><input type="radio" name="piorjogo" value="Arcadegeddon"> Arcadegeddon</div>
-      <div><input type="radio" name="piorjogo" value="League"> League</div>
-      <div><input type="radio" name="piorjogo" value="Pummel Party"> Pummel Party</div>
-      <div><input type="radio" name="piorjogo" value="Ranch Sim"> Ranch Sim</div>
+<section id="done6" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice6"></strong></p>
+    <button class="next-arrow" onclick="goto(7)">↓</button>
+  </div>
+</section>
 
-      <br>
-      <button type="submit" style="padding: 10px 20px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer; background: #00d4ff; color: black;">Votar</button>
-    </form>
+<section id="done7" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice7"></strong></p>
+    <button class="next-arrow" onclick="goto(8)">↓</button>
+  </div>
+</section>
+
+<section id="done8" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice8"></strong></p>
+    <button class="next-arrow" onclick="goto(9)">↓</button>
+  </div>
+</section>
+
+<section id="done9" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice9"></strong></p>
+    <button class="next-arrow" onclick="goto(10)">↓</button>
+  </div>
+</section>
+
+<section id="done10" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice10"></strong></p>
+    <button class="next-arrow" onclick="goto(11)">↓</button>
+  </div>
+</section>
+
+<section id="done11" class="page" aria-hidden="true">
+  <div class="done-screen">
+    <h2>Voto registrado!</h2>
+    <p>Obrigado por votar em <strong id="doneChoice11"></strong></p>
+    <button class="next-arrow" onclick="goto(1)">↺</button>
+  </div>
+</section>
+
+<div class="footer-note">NFG Awards • Votação automática — seus votos vão para o Google Sheets</div>
 
 <script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbz-Ee00-YykIxdHm9tQaP80o0oa2xmci6Ru7z4GYk26TuJjQmx10htMKyDo_2ZqC32oVQ/exec";
-  const form = document.getElementById("voteForm");
+const scriptURL = "https://script.google.com/macros/s/AKfycbz-Ee00-YykIxdHm9tQaP80o0oa2xmci6Ru7z4GYk26TuJjQmx10htMKyDo_2ZqC32oVQ/exec";
+const totalPages = 11;
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
+function goto(n){
+  // hide all pages
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  // show page or done
+  const page = document.getElementById('page'+n);
+  if(page) page.classList.add('active');
+  const done = document.getElementById('done'+n);
+  if(done) done.classList.add('active');
+}
 
-    const data = Object.fromEntries(new FormData(form).entries());
+// initialize options behavior
+for(let i=1;i<=totalPages;i++){
+  const page = document.getElementById('page'+i);
+  const done = document.getElementById('done'+i);
+  if(!page) continue;
+  const options = Array.from(page.querySelectorAll('.option'));
+  const voteBtn = page.querySelector('.vote-btn');
+  let selected = null;
 
-    fetch(scriptURL, {
-      method: "POST",
-      body: JSON.stringify(data)
-    })
-    .then(r => alert("Voto registrado com sucesso!"))
-    .catch(err => alert("Erro ao enviar voto."));
+  options.forEach(opt => {
+    opt.addEventListener('click', ()=>{
+      options.forEach(o=>o.classList.remove('selected'));
+      opt.classList.add('selected');
+      selected = opt.getAttribute('data-value');
+      voteBtn.disabled = false;
+    });
   });
+
+  voteBtn.addEventListener('click', ()=>{
+    if(!selected) return;
+    const payload = {category: page.getAttribute('data-cat'), choice: selected, ts: new Date().toISOString()};
+    // send to Google Apps Script
+    fetch(scriptURL, {method:'POST',body:JSON.stringify(payload)})
+      .then(r=>{
+        // show done screen for this index
+        // populate doneChoice
+        const doneChoice = document.getElementById('doneChoice'+i);
+        if(doneChoice) doneChoice.textContent = selected;
+        // hide current page and show its done screen
+        page.classList.remove('active');
+        const doneEl = document.getElementById('done'+i);
+        if(doneEl) doneEl.classList.add('active');
+      })
+      .catch(err=>{
+        alert('Erro ao enviar voto. Tente novamente.');
+        console.error(err);
+      });
+  });
+}
+
+// small UX: allow Enter to vote when an option is selected
+window.addEventListener('keydown', e=>{
+  if(e.key==='Enter'){
+    const activePage = document.querySelector('.page.active');
+    if(!activePage) return;
+    const btn = activePage.querySelector('.vote-btn');
+    if(btn && !btn.disabled) btn.click();
+  }
+});
 </script>
-  </div>
-    <div class="option">Bibi Babydoll</div>
-    <div class="option">Linkin Park</div>
-    <div class="option">Lady Gaga</div>
-    <div class="option">LOL</div>
-
-  </div>
 
 </body>
 </html>
-</body>
-</html>
-<!-- HTML will be provided here manually since canvas not accessible -->
